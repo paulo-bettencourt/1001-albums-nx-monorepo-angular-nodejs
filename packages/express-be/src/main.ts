@@ -7,11 +7,14 @@ import express from 'express';
 import * as path from 'path';
 
 const app = express();
+const artistsAndAlbumsMerged = [];
+import cors from 'cors';
 
+app.use(cors());
 app.use('/assets', express.static(path.join(__dirname, 'assets')));
 
 app.get('/api', (req, res) => {
-  res.send({ message: 'Welcome to express-be!' });
+  res.send(artistsAndAlbumsMerged);
 });
 
 const port = process.env.PORT || 3333;
@@ -33,7 +36,21 @@ import puppeteer from 'puppeteer';
   // Set screen size
   await page.setViewport({ width: 1080, height: 1024 });
 
-  const artists = await page.$$('h2'); // select all <h2> tags
+  // Webscrapper gets artists
+  const artistsWithNumbers = await page.$$('h2'); // select all <h2> tags
+  const artists = [];
+  for (let i = 0; i < artistsWithNumbers.length && i < 100; i++) {
+    const album = artistsWithNumbers[i];
+    const text = await album.evaluate((node) =>
+      node.textContent
+        .trim()
+        .replace(/^\d+\./, '')
+        .trim()
+    );
+    artists.push(text);
+  }
+
+  // Webscrapper gets albums
   const albumsWithoutTrim = await page.$$('h3'); // select all <h3> tags
   const albums = [];
 
@@ -45,17 +62,19 @@ import puppeteer from 'puppeteer';
     albums.push(text);
   }
 
-  const artistsAndAlbumsMerged = [];
-  for (let i = 0; i < artists.length && i < 100; i++) {
-    const mergedArtistAndAlbum = { artist: artists[i], album: albums[i] };
+  // Creation of Record object (number of record + artist + album)
+  for (let i = 1; i < artists.length + 1 && i < 101; i++) {
+    const mergedArtistAndAlbum = {
+      number: i,
+      artist: artists[i - 1],
+      album: albums[i - 1],
+    };
     artistsAndAlbumsMerged.push(mergedArtistAndAlbum);
   }
 
   // Loop through the merged array and log the contents
-  for (const { artist, album } of artistsAndAlbumsMerged) {
-    const artistText = await artist.evaluate((node) => node.textContent);
-    const albumText = album; // no need to evaluate the album text here
-    console.log(`artist: ${artistText}, album: ${albumText}`);
+  for (const { number, artist, album } of artistsAndAlbumsMerged) {
+    console.log(`number: ${number}, artist: ${artist}, album: ${album}`);
   }
 
   await browser.close();
