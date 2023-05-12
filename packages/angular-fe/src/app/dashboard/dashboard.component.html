@@ -1,2 +1,4 @@
-<p>dashboard works!</p>
-{{albums$ | async | json}}
+<h1>1001 albums</h1>
+<ng-container *ngFor="let album of albums$ | async">
+  <div class="album-row">{{album.number}}: {{album.album}} - {{album.artist}}</div>
+</ng-container>
