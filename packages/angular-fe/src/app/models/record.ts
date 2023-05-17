@@ -1,5 +1,6 @@
 export interface Record {
-  number: string;
+  number: number;
   artist: string;
   album: string;
+  isSelected: boolean;
 }

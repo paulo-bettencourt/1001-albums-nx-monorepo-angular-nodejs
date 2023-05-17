@@ -35,6 +35,7 @@ async function scrapeTop1001Albums(req, res) {
       number: i + 1,
       artist: artists[i],
       album: albums[i],
+      isSelected: false,
     });
   }
 

@@ -1,14 +1,15 @@
 <div class="album-container">
-  <h1>1001 albums you must hear before you die</h1>
+  <h1>1001 Albums You Must Hear Before You Die</h1>
   <div
     *ngFor="let album of albums.slice(currentPageIndex * pageSize, (currentPageIndex + 1) * pageSize)"
     class="ng-for-container"
   >
     <mat-card
-      (click)="selectedRecord(album.number)"
+      (click)="selectedRecord(album.number, album.isSelected)"
       id="mat-card-{{album.number}}"
+      [class.background-color]="album.isSelected"
     >
-      <mat-card-content>{{album.number}}: {{album.album}} - {{album.artist}}</mat-card-content>
+      <mat-card-content>{{album.number}}: {{album.artist}} - {{album.album}}</mat-card-content>
     </mat-card>
   </div>
   <mat-paginator

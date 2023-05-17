@@ -4,14 +4,21 @@
   font-family: 'Roboto Mono', monospace;
 }
 
+.album-container {
+  text-align: center;
+}
+
 mat-card {
   cursor: pointer;
   width: 200px;
   height: 150px;
+  text-align: left !important;
 }
 
 .background-color {
-  background-color: red;
+  background-color: green;
+  color: white;
+  font-weight: bold;
 }
 
 .album-container {

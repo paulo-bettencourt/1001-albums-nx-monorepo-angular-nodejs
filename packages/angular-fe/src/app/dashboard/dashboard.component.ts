@@ -26,15 +26,8 @@ export class DashboardComponent {
     });
   }
 
-  selectedRecord(albumNumber: string) {
-    console.log('album number: ', albumNumber);
-    const selectedCard = document.getElementById('mat-card-' + albumNumber);
-    if (selectedCard && selectedCard.style.backgroundColor !== 'green') {
-      selectedCard.style.backgroundColor = 'green';
-      selectedCard.style.color = 'white';
-    } else if (selectedCard) {
-      selectedCard.style.backgroundColor = '';
-      selectedCard.style.color = 'black';
-    }
+  selectedRecord(albumNumber: number, isSelected: boolean) {
+    console.log('hmm ', albumNumber);
+    this.albums[albumNumber - 1].isSelected = !isSelected;
   }
 }
