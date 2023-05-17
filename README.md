@@ -8,6 +8,9 @@
 
 Run `nx graph` to see a diagram of the dependencies of the projects.
 
+Run `npx nx run albums-fe:serve --port=4500`to run the 1001 albums app.
+`
+
 ## Remote caching
 
 Run `npx nx connect-to-nx-cloud` to enable [remote caching](https://nx.app) and make CI faster.
