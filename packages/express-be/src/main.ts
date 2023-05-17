@@ -4,6 +4,7 @@ import * as path from 'path';
 import cors from 'cors';
 
 // Modules
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const webscrapper = require('./modules/scrapeTop1001Albums');
 
 // Variables
