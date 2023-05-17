@@ -1,4 +1,19 @@
-<h1>1001 albums</h1>
-<ng-container *ngFor="let album of albums$ | async">
-  <div class="album-row">{{album.number}}: {{album.album}} - {{album.artist}}</div>
-</ng-container>
+<div class="album-container">
+  <h1>1001 albums you must hear before you die</h1>
+  <div
+    *ngFor="let album of albums.slice(currentPageIndex * pageSize, (currentPageIndex + 1) * pageSize)"
+    class="ng-for-container"
+  >
+    <mat-card
+      (click)="selectedRecord(album.number)"
+      id="mat-card-{{album.number}}"
+    >
+      <mat-card-content>{{album.number}}: {{album.album}} - {{album.artist}}</mat-card-content>
+    </mat-card>
+  </div>
+  <mat-paginator
+    [length]="albums.length"
+    [pageSize]="pageSize"
+    (page)="currentPageIndex = $event.pageIndex"
+  ></mat-paginator>
+</div>

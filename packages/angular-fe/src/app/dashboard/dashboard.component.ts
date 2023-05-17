@@ -1,32 +1,40 @@
-import { Component, Inject } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { BehaviorSubject, Subject } from 'rxjs';
 import { ApiService } from '../api.service';
 import { HttpClientModule } from '@angular/common/http';
-import { MatPaginatorModule } from '@angular/material/paginator';
-import { provideAnimations } from '@angular/platform-browser/animations';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { MatCardModule } from '@angular/material/card';
 import { Record } from '../models/record';
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [CommonModule, HttpClientModule, MatPaginatorModule],
-  providers: [ApiService, provideAnimations()],
+  imports: [CommonModule, HttpClientModule, MatPaginatorModule, MatCardModule],
+  providers: [ApiService],
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss'],
-  animations: [MatPaginatorModule],
 })
 export class DashboardComponent {
-  albums$ = new BehaviorSubject<Record[]>([
-    { number: '', artist: '', album: '' },
-  ]);
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  albums: Record[] = [];
+  currentPageIndex = 0;
+  pageSize = 12;
+  isBackgrounda = true;
 
   constructor(private apiService: ApiService) {
-    this.get1001albums();
+    this.apiService.get1001albums().subscribe((albums: Record[]) => {
+      this.albums = albums;
+    });
   }
 
-  get1001albums() {
-    this.apiService.get1001albums().subscribe((albums: Record[]) => {
-      this.albums$.next(albums);
-    });
+  selectedRecord(albumNumber: string) {
+    console.log('album number: ', albumNumber);
+    const selectedCard = document.getElementById('mat-card-' + albumNumber);
+    if (selectedCard && selectedCard.style.backgroundColor !== 'green') {
+      selectedCard.style.backgroundColor = 'green';
+      selectedCard.style.color = 'white';
+    } else if (selectedCard) {
+      selectedCard.style.backgroundColor = '';
+      selectedCard.style.color = 'black';
+    }
   }
 }
