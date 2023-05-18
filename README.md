@@ -30,9 +30,9 @@ Run `nx serve angular-fe`to run the 1001 albums app. This is the FE app where yo
 
 ## Screenshots
 
-![Screenshot 2023-05-18 at 18 43 47](https://github.com/paulo-bettencourt/1001-albums-nx-monorepo-angular-nodejs/assets/37920932/e9b0bc1b-869c-4867-bc9c-cc4d2bdd4674)
+![Screenshot 2023-05-18 at 18 43 47](https://github.com/paulo-bettencourt/1001-albums-nx-monorepo-angular-nodejs/assets/37920932/5f232a57-0a59-4ce5-93e8-0b94c6b09066)
 
-![Screenshot 2023-05-18 at 18 43 47 (1)](https://github.com/paulo-bettencourt/1001-albums-nx-monorepo-angular-nodejs/assets/37920932/bbd7e978-3eeb-4603-8d44-bff2f820ac4e)
+![Screenshot 2023-05-18 at 18 43 54](https://github.com/paulo-bettencourt/1001-albums-nx-monorepo-angular-nodejs/assets/37920932/6cf14567-89c5-41ef-85d9-7c1d6a5cd9ad)
 
 ## Remote caching
 
