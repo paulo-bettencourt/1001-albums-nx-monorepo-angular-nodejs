@@ -1,11 +1,16 @@
 const puppeteer = require('puppeteer');
 
 async function scrapeTop1001Albums(req, res) {
-  const browser = await puppeteer.launch({ headless: 'new' });
+  const browser = await puppeteer.launch({
+    headless: 'new',
+    executablePath: '/usr/local/bin/chromium',
+    ignoreDefaultArgs: ['--disable-extensions'],
+    args: ['--no-sandbox'],
+  });
   const page = await browser.newPage();
   const artistsAndAlbums = [];
 
-  await page.goto('http://localhost:4201/');
+  await page.goto('http://localhost:4500/');
 
   // Set screen size
   await page.setViewport({ width: 1080, height: 1024 });

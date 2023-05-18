@@ -1,10 +1,10 @@
 import { Component, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ApiService } from '../api.service';
 import { HttpClientModule } from '@angular/common/http';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatCardModule } from '@angular/material/card';
 import { Record } from '../models/record';
+import { ApiService } from '../services/api.service';
 @Component({
   selector: 'app-dashboard',
   standalone: true,
