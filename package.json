@@ -2,7 +2,15 @@
   "name": "1001-albums",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "albums-fe:dev:docker": "nx serve albums-fe --host=0.0.0.0",
+    "angular-fe:dev:docker": "nx serve angular-fe --host=0.0.0.0 --poll 5000",
+    "express-be:dev:docker": "nx serve express-be --host=0.0.0.0 --port=4311",
+    "start": "nx serve",
+    "build": "nx build",
+    "test": "nx test",
+    "postinstall": "ngcc --properties es2015 browser module main"
+  },
   "private": true,
   "devDependencies": {
     "@angular-devkit/build-angular": "~16.0.0",

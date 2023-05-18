@@ -1,0 +1,33 @@
+version: '3'
+
+services:
+  # Angular FE App with the 1001 albums
+  albums-fe:
+    extends:
+      file: docker-compose.base.yml
+      service: nx-app-base
+    command: npm run albums-fe:dev:docker
+    ports:
+      - 4201:4200
+
+  # Angular FE with cards scrapped from first app
+  angular-fe:
+    extends:
+      file: docker-compose.base.yml
+      service: nx-app-base
+    command: npm run angular-fe:dev:docker
+    ports:
+      - 4202:4200
+
+  # Express App
+  express-be:
+    extends:
+      file: docker-compose.base.yml
+      service: nx-app-base
+    command: npm run express-be:dev:docker
+    ports:
+      - 4310:3333 # API Entry port
+      - 4311:4311 # Server Debugging port
+
+volumes:
+  mono-node-modules: null

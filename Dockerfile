@@ -1,8 +1,10 @@
-FROM node:16-alpine AS build
-WORKDIR /
-COPY package*.json ./
-RUN npm install
+# Dockerfile
+FROM node:17-alpine3.12
+
+WORKDIR /app
+
 COPY . .
-RUN npm run build
-EXPOSE 4200
-CMD ["npm", "start"]
+
+RUN npm install
+
+CMD ["npm", "run", "start", "albums-fe"]

@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "projects": {
+    "albums-fe": "packages/albums-fe",
+    "albums-fe-e2e": "packages/albums-fe",
+    "angular-fe": "packages/angular-fe",
+    "angular-fe-e2e": "packages/angular-fe-e2e",
+    "express-be": "packages/express-be",
+    "express-be-e2e": "packages/express-be-e2e"
+  }
+}
