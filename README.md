@@ -10,23 +10,23 @@ The app that allows you to mark down the albums that you've listened to, from th
 
 ## Technologies
 
-This is an NX monorepo with 3 different apps:
+This repository houses an Nx monorepo with three distinct applications:
 
-- Angular FE (app that makes a Rest API request to a NodeJS Express server, which has webscrapped the following webapp)
-- Angular FE (page to be scrapped with the 1001 albums by a NodeJS Express server)
-- NodeJS Express (BE app with node package Puppeteer that webscraps the previous app)
+- Angular FE (Frontend): An Angular application that makes REST API requests to a Node.js Express server. The server performs web scraping on the following web app.
+- Angular FE (Scraped Page): An Angular application that represents the page to be scraped by the Node.js Express server. This page contains the 1001 albums.
+- Node.js Express BE (Backend): A Node.js Express application that utilizes the Puppeteer package for web scraping on the Angular app mentioned above.
 
-The styling has been done with Angular Material.
+The styling for the frontend applications has been implemented using Angular Material.
 
-## Understand this workspace
+## Understanding the workspace
 
-Run `nx graph` to see a diagram of the dependencies of the projects.
+To visualize the project dependencies, run `nx graph` in the workspace.
 
-Run `npx nx run albums-fe:serve --port=4500`to run the 1001 albums app to be scrapped by the NodeJS Express app.
+To run the 1001 albums app (to be scraped by the Node.js Express app), execute `npx nx run albums-fe:serve --port=4500`.
 
-Run `nx serve express-be`to run NodeJS Express app that will scrape the http://localhost:4500 Angular app with the 1001 records.
+To run the Node.js Express app that scrapes the Angular app with the 1001 records, execute `nx serve express-be`.
 
-Run `nx serve angular-fe`to run the 1001 albums app. This is the FE app where you'll be able to navigate and mark down the records that you've already listened to.
+To run the 1001 albums app (frontend), where you can navigate and mark down the albums you've listened to, execute `nx serve angular-fe`.
 
 ## Screenshots
 
@@ -36,8 +36,8 @@ Run `nx serve angular-fe`to run the 1001 albums app. This is the FE app where yo
 
 ## Remote caching
 
-Run `npx nx connect-to-nx-cloud` to enable [remote caching](https://nx.app) and make CI faster.
+To enable [remote caching](https://nx.app) and improve CI performance, run `npx nx connect-to-nx-cloud`.
 
-## Further help
+## Further assistance
 
-Visit the [Nx Documentation](https://nx.dev) to learn more.
+For more information and detailed documentation, visit the [Nx Documentation](https://nx.dev).
